@@ -35,12 +35,19 @@ public class UserRestService {
 	@Path("/username/{username : [a-zA-Z][a-zA-Z_0-9]}")
 	public Response getUserByUserName(@PathParam("username") String username) {
 	   return Response.status(200).entity("getUserByUserName is called, username : " + username).build();
- 
 	}
 	
 	@GET
 	@Path("/books/{isbn : \\d+}")
 	public Response getUserBookByISBN(@PathParam("isbn") String isbn) {
 	   return Response.status(200).entity("getUserBookByISBN is called, isbn : " + isbn).build();
+	}
+	
+	@GET
+	@Path("{year}/{month}/{day}")
+	public Response getUserHistory(@PathParam("year") int year,	@PathParam("month") int month, 	@PathParam("day") int day) {
+	   String date = year + "/" + month + "/" + day;
+	   return Response.status(200).entity("getUserHistory is called, year/month/day : " + date).build();
+ 
 	}
 }
